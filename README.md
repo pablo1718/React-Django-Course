@@ -1,0 +1,13 @@
+# React-Django-Course (Full stack APP)
+- React Js from scratch
+- Django basics (Rest_Framework)
+- Postman for test API´s
+- Axios to connect the Frontend with the Backend API´s
+- Webpack compile JavaScript files (main.js)
+- Babel Transpile JavaScript files (ES67)
+- Redux Handle and storage the state data components 
+- Reackt Hooks to manage the components states
+- React Messages
+- JWT Authentication (Django), Knox
+- Use Postgres DB as our Relational DB
+- Deploy app in AWS using shell script
