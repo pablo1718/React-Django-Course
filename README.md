@@ -1,8 +1,8 @@
 # React-Django-Course (Full stack APP)
 - React Js from scratch
 - Django basics (Rest_Framework)
-- Postman for test API'S
-- Axios to connect the FRONTEND with the BACKEND
+- Postman for test API´s
+- Axios to connect the Frontend with the Backend API´s
 - Webpack compile JavaScript files (main.js)
 - Babel Transpile JavaScript files (ES67)
 - Redux Handle and storage the state data components 
