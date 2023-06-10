@@ -1,0 +1,12 @@
+# React-Django-Course
+- React Js from scratch
+- Django basic (Rest_Framework)
+- Postman for testing  API's
+- Axios to connect frontend and backend
+- Webpack (main.js)
+- Babel (ES67)
+- Redux
+- Reackt Hooks
+- JWT Authentication (Django), Knox
+- Postgres DB as our relational DB
+- Deploy app in AWS
