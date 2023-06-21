@@ -16,6 +16,10 @@ function Form() {
       message,
     };
     dispatch(createStudent(data));
+    //Reset to default form values onSubmit
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (

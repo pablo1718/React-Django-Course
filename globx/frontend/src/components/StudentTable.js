@@ -63,47 +63,51 @@ function Students() {
 
   return (
     <>
-      <h2>Students Table</h2>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((s) => (
-              <tr key={s.id}>
-                <td>{s.id}</td>
-                <td>{s.name}</td>
-                <td>{s.email}</td>
-                <td>{s.message}</td>
-                <td>
-                  <button
-                    className="btn btn-danger btn-sm mx-2"
-                    onClick={() => dispatch(deleteStudent(s.id))}
-                  >
-                    {" "}
-                    Delete
-                  </button>
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => showModal(s.id, s.name, s.email, s.message)}
-                  >
-                    {" "}
-                    Edit
-                  </button>
-                </td>
+      <div className="card card-body mt-4 mb-4">
+        <h2>Students Table</h2>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {students.map((s) => (
+                <tr key={s.id}>
+                  <td>{s.id}</td>
+                  <td>{s.name}</td>
+                  <td>{s.email}</td>
+                  <td>{s.message}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger btn-sm mx-2"
+                      onClick={() => dispatch(deleteStudent(s.id))}
+                    >
+                      {" "}
+                      Delete
+                    </button>
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      onClick={() =>
+                        showModal(s.id, s.name, s.email, s.message)
+                      }
+                    >
+                      {" "}
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
       <ModalUser
         show={show}
         close={closeModal}

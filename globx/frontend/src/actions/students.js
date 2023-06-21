@@ -1,42 +1,55 @@
 import { GET_STUDENTS, DELETE_STUDENT, CREATE_STUDENT } from "./types";
 import axios from "axios";
+import { createMessage, showErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 //GET STUDENTS LIST
-export const getStudents = () => async (dispatch) => {
-  try {
-    const res = await axios.get(`/api/students`);
-    dispatch({
-      type: GET_STUDENTS,
-      payload: res.data,
+export const getStudents = () => async (dispatch, getState) => {
+  await axios
+    .get(`/api/students`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_STUDENTS,
+        payload: res.data,
+      });
+    })
+    .catch((e) => {
+      dispatch(showErrors(e.response.data, e.response.status));
     });
-  } catch (error) {
-    console.log(error);
-  }
 };
 
 //DELETE ACTION
-export const deleteStudent = (id) => async (dispatch) => {
-  const resp = await axios.delete(`/api/students/${id}`);
-  try {
-    dispatch({
-      type: DELETE_STUDENT,
-      payload: id,
+export const deleteStudent = (id) => async (dispatch, getState) => {
+  await axios
+    .delete(`/api/students/${id}`, tokenConfig(getState))
+    .then((resp) => {
+      dispatch({
+        type: DELETE_STUDENT,
+        payload: id,
+      });
+      dispatch(
+        createMessage({
+          studentDeleted: "Student deleted Succesfully",
+        })
+      );
+    })
+    .catch((e) => {
+      dispatch(showErrors(e.response.data, e.response.status));
     });
-  } catch (error) {
-    console.log(error);
-  }
-  console.log(resp.data);
 };
 
-//POST STUDENT
-export const createStudent = (data) => async (dispatch) => {
-  const res = await axios.post("/api/students/", data);
-  try {
-    dispatch({
-      type: CREATE_STUDENT,
-      payload: res.data,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+//ADD STUDENT
+export const createStudent = (data) => async (dispatch, getState) => {
+  await axios
+    .post("/api/students/", data, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: CREATE_STUDENT,
+        payload: res.data,
+      });
+      dispatch(
+        createMessage({ studentCreated: "Student created successfully" })
+      );
+    })
+    .catch((e) => dispatch(showErrors(e.response.data, e.response.status)));
 };
